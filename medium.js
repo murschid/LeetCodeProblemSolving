@@ -208,3 +208,34 @@ var reverseBits = function (n) {
 	return parseInt(temp.reverse().join(""), 2);
 };
 // console.log(reverseBits(43261596));
+
+/**	350. Intersection of Two Arrays II
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+const intersect = function (nums1, nums2) {
+	const result = [];
+	const obj = {};
+	for (let i of nums1) i in obj ? (obj[i] = obj[i] + 1) : (obj[i] = 1);
+	for (let j of nums2) {
+		if (j in obj && obj[j] > 0) {
+			result.push(j);
+			obj[j] = obj[j] - 1;
+		}
+	}
+	console.log(obj);
+	return result;
+
+	const result = [];
+	const map = new Map();
+	for (const n of nums1) map.has(n) ? map.set(n, map.get(n) + 1) : map.set(n, 1);
+	for (const n of nums2) {
+		if (map.has(n) && map.get(n) > 0) {
+			result.push(n);
+			map.set(n, map.get(n) - 1);
+		}
+	}
+	return result;
+};
+console.log(intersect([1, 2, 2, 1], [2, 2]));
