@@ -13,7 +13,7 @@ This repository contains my solutions to various LeetCode problems. The solution
 
 To use this repository, you can either clone it or download it as a zip file.
 
-`$ git clone https://github.com/murschid/ProblemSolving.git`
+`$ git clone https://github.com/murschid/LeetCode Problem Solving.git`
 
 ## Usage
 
