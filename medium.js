@@ -159,4 +159,52 @@ const reverse = function (x) {
 	if (input > 0x7fffffff) return 0;
 	return x < 0 ? -input : input;
 };
-console.log(reverse(123));
+// console.log(reverse(123));
+
+/** 17. Letter Combinations of a Phone Number
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function (digits) {
+	// TODO
+	const data = {
+		2: "abc",
+		3: "def",
+		4: "ghi",
+		5: "jkl",
+		6: "mno",
+		7: "pqrs",
+		8: "tuv",
+		9: "wxyz",
+	};
+	const res = [];
+	for (let i of digits) {
+		for (let j = 0; j < data[i].length; j++) {}
+	}
+};
+// letterCombinations("23");
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+const search = function (nums, target) {
+	let result = -1;
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] === target) result = i;
+	}
+	return result;
+};
+// console.log(search([4, 5, 6, 7, 0, 1, 2], 0));
+
+/**
+ * @param {number} n - a positive integer
+ * @return {number} - a positive integer
+ */
+var reverseBits = function (n) {
+	let temp = n.toString(2).split("");
+	while (temp.length !== 32) temp.unshift("0");
+	return parseInt(temp.reverse().join(""), 2);
+};
+// console.log(reverseBits(43261596));
