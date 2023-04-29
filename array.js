@@ -154,3 +154,19 @@ const check = (str) => {
 	return temp.join("");
 };
 // console.log(backspaceCompare("xywrrmp", "xywrrmu#p"));
+
+/**	35. Search Insert Position
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+const searchInsert = function (nums, target) {
+	if (!nums.includes(target)) {
+		nums.push(target);
+		nums.sort((a, b) => a - b);
+	}
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] === target) return i;
+	}
+};
+console.log(searchInsert([3, 5, 7, 9, 10], 8));

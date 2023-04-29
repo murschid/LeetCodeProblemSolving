@@ -224,18 +224,17 @@ const intersect = function (nums1, nums2) {
 			obj[j] = obj[j] - 1;
 		}
 	}
-	console.log(obj);
 	return result;
 
-	const result = [];
-	const map = new Map();
-	for (const n of nums1) map.has(n) ? map.set(n, map.get(n) + 1) : map.set(n, 1);
-	for (const n of nums2) {
-		if (map.has(n) && map.get(n) > 0) {
-			result.push(n);
-			map.set(n, map.get(n) - 1);
-		}
-	}
-	return result;
+	// const result = [];
+	// const map = new Map();
+	// for (const n of nums1) map.has(n) ? map.set(n, map.get(n) + 1) : map.set(n, 1);
+	// for (const n of nums2) {
+	// 	if (map.has(n) && map.get(n) > 0) {
+	// 		result.push(n);
+	// 		map.set(n, map.get(n) - 1);
+	// 	}
+	// }
+	// return result;
 };
 console.log(intersect([1, 2, 2, 1], [2, 2]));
