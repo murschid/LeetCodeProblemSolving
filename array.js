@@ -169,4 +169,18 @@ const searchInsert = function (nums, target) {
 		if (nums[i] === target) return i;
 	}
 };
-console.log(searchInsert([3, 5, 7, 9, 10], 8));
+// console.log(searchInsert([3, 5, 7, 9, 10], 8));
+
+/**	338. Counting Bits
+ * @param {number} n
+ * @return {number[]}
+ */
+const countBits = function (n) {
+	const result = [];
+	for (let i = 0; i <= n; i++) {
+		let temp = i.toString(2).split("");
+		result.push(temp.reduce((acc, cur) => acc + parseInt(cur), 0));
+	}
+	return result;
+};
+console.log(countBits(5));
