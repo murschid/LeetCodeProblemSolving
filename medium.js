@@ -237,4 +237,33 @@ const intersect = function (nums1, nums2) {
 	// }
 	// return result;
 };
-console.log(intersect([1, 2, 2, 1], [2, 2]));
+// console.log(intersect([1, 2, 2, 1], [2, 2]));
+
+/**	204. Count Primes
+ * @param {number} n
+ * @return {number}
+ */
+const countPrimes = function (n) {
+	// let result = 0;
+	// for (let i = 2; i < n; i++) if (isPrime(i)) result++;
+	// return result;
+
+	// optimized for LeetCode
+	let hash = new Array(n).fill(true).fill(false, 0, 2);
+	for (let i = 2; i * i < n; i++) {
+		if (hash[i]) {
+			for (let j = i * i; j < n; j += i) {
+				hash[j] = false;
+			}
+		}
+	}
+	return hash.filter((val) => val).length;
+};
+
+const isPrime = (n) => {
+	for (let i = 2; i <= Math.ceil(n / 2); i++) {
+		if (n % i === 0) return false;
+	}
+	return true;
+};
+console.log(countPrimes(10));
