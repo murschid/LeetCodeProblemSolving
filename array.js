@@ -178,9 +178,49 @@ const searchInsert = function (nums, target) {
 const countBits = function (n) {
 	const result = [];
 	for (let i = 0; i <= n; i++) {
-		let temp = i.toString(2).split("");
+		const temp = i.toString(2).split("");
 		result.push(temp.reduce((acc, cur) => acc + parseInt(cur), 0));
 	}
 	return result;
 };
-console.log(countBits(5));
+// console.log(countBits(5));
+
+/**	345. Reverse Vowels of a String
+ * @param {string} s
+ * @return {string}
+ */
+const reverseVowels = function (s) {
+	const vowels = { a: 1, e: 1, i: 1, o: 1, u: 1, A: 1, E: 1, I: 1, O: 1, U: 1 };
+	const input = s.split("");
+	let start = 0;
+	let end = input.length - 1;
+	while (start < end) {
+		if (vowels[input[start]] && vowels[input[end]]) {
+			[input[start], input[end]] = [input[end], input[start]];
+			start++;
+			end--;
+		} else if (vowels[input[start]]) {
+			end--;
+		} else start++;
+	}
+	return input.join("");
+};
+// console.log(reverseVowels("leetcode"));
+
+/**	2595. Number of Even and Odd Bits
+ * @param {number} n
+ * @return {number[]}
+ */
+const evenOddBit = function (n) {
+	const input = n.toString(2).split("").reverse();
+	let even = 0;
+	let odd = 0;
+	input.map((value, index) => {
+		if (value == 1) {
+			if (index % 2 === 0) even++;
+			else odd++;
+		}
+	});
+	return [even, odd];
+};
+console.log(evenOddBit(2));

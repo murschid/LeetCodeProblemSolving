@@ -244,3 +244,83 @@ const sumZero = function (n) {
 	return res;
 };
 // console.log(sumZero(5));
+
+/**	231. Power of Two
+ * @param {number} n
+ * @return {boolean}
+ */
+const isPowerOfTwo = function (n) {
+	if (n === 1) return true;
+	if (n === 0) return false;
+	while (n % 2 === 0) {
+		n = n / 2;
+		if (n === 1) return true;
+	}
+	return false;
+};
+// console.log(isPowerOfTwo(8));
+
+/**	2652. Sum Multiples
+ * @param {number} n
+ * @return {number}
+ */
+const sumOfMultiples = function (n) {
+	let sum = 0;
+	for (let i = 3; i <= n; i++) {
+		if (i % 3 === 0 || i % 5 === 0 || i % 7 === 0) sum += i;
+	}
+	return sum;
+};
+// console.log(sumOfMultiples(10));
+
+/**	2656. Maximum Sum With Exactly K Elements
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+const maximizeSum = function (nums, k) {
+	nums.sort((a, b) => a - b);
+	const size = nums.length - 1;
+	let result = 0;
+	while (k > 0) {
+		let temp = nums.splice(size, 1);
+		result += temp[0];
+		nums.push(temp[0] + 1);
+		k--;
+	}
+	return result;
+};
+// console.log(maximizeSum([1, 2, 3, 4, 5], 3));
+
+/**	2651. Calculate Delayed Arrival Time
+ * @param {number} arrivalTime
+ * @param {number} delayedTime
+ * @return {number}
+ */
+const findDelayedArrivalTime = function (arrivalTime, delayedTime) {
+	return (arrivalTime + delayedTime) % 24;
+};
+// console.log(findDelayedArrivalTime(13, 11));
+
+/**	2643. Row With Maximum Ones
+ * @param {number[][]} mat
+ * @return {number[]}
+ */
+const rowAndMaximumOnes = function (mat) {
+	const map = new Map();
+	mat.forEach((value, index) => {
+		map.set(
+			index,
+			value.reduce((acc, cur) => acc + cur, 0)
+		);
+	});
+	// if (temp.length > 1 && temp[0] === temp[1]) return [0, temp[0]];
+	// return temp.length > 1 ? [1, Math.max(...temp)] : [0, temp[0]];
+	return [Math.max(...map.values)];
+};
+console.log(
+	rowAndMaximumOnes([
+		[1, 1],
+		[0, 1],
+	])
+);
