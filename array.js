@@ -223,4 +223,19 @@ const evenOddBit = function (n) {
 	});
 	return [even, odd];
 };
-console.log(evenOddBit(2));
+// console.log(evenOddBit(2));
+
+/**	2529. Maximum Count of Positive Integer and Negative Integer
+ * @param {number[]} nums
+ * @return {number}
+ */
+const maximumCount = function (nums) {
+	let positive = 0;
+	let negative = 0;
+	nums.forEach((value) => {
+		if (value > 0) positive++;
+		if (value < 0) negative++;
+	});
+	return Math.max(positive, negative);
+};
+console.log(maximumCount([-3, -2, -1, 0, 0, 1, 2]));
