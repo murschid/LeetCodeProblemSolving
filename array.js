@@ -296,4 +296,17 @@ const arraySign = function (nums) {
 	for (let i = 0; i < nums.length; i++) product *= nums[i];
 	return product > 0 ? 1 : product < 0 ? -1 : 0;
 };
-console.log(arraySign([-1, -2, -3, -4, 3, 2, 1]));
+// console.log(arraySign([-1, -2, -3, -4, 3, 2, 1]));
+
+/**	2441. Largest Positive Integer That Exists With Its Negative
+ * @param {number[]} nums
+ * @return {number}
+ */
+const findMaxK = function (nums) {
+	const res = [-1];
+	nums.map((value) => {
+		if (value > 0 && nums.includes(-value)) res.push(value);
+	});
+	return Math.max(...res);
+};
+console.log(findMaxK([-1, 10, 6, 7, -7, 1]));
