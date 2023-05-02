@@ -309,4 +309,20 @@ const findMaxK = function (nums) {
 	});
 	return Math.max(...res);
 };
-console.log(findMaxK([-1, 10, 6, 7, -7, 1]));
+// console.log(findMaxK([-1, 10, 6, 7, -7, 1]));
+
+/**	2586. Count the Number of Vowel Strings in Range
+ * @param {string[]} words
+ * @param {number} left
+ * @param {number} right
+ * @return {number}
+ */
+const vowelStrings = function (words, left, right) {
+	const vowels = { a: "a", e: "e", i: "i", o: "o", u: "u" };
+	let res = 0;
+	for (let i = left; i <= right; i++) {
+		if (words[i][0] in vowels && words[i][words[i].length - 1] in vowels) res++;
+	}
+	return res;
+};
+console.log(vowelStrings(["hey", "aeo", "mu", "ooo", "artro"], 1, 4));
