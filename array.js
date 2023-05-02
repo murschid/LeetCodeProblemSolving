@@ -238,4 +238,38 @@ const maximumCount = function (nums) {
 	});
 	return Math.max(positive, negative);
 };
-console.log(maximumCount([-3, -2, -1, 0, 0, 1, 2]));
+// console.log(maximumCount([-3, -2, -1, 0, 0, 1, 2]));
+
+/**	2553. Separate the Digits in an Array
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+const separateDigits = function (nums) {
+	const output = [];
+	nums.forEach((value) => {
+		output.push(...value.toString().split(""));
+	});
+	return output;
+};
+// console.log(separateDigits([13, 25, 83, 77]));
+
+/**	2660. Determine the Winner of a Bowling Game
+ * @param {number[]} player1
+ * @param {number[]} player2
+ * @return {number}
+ */
+const isWinner = function (player1, player2) {
+	let sum1 = calculate(player1);
+	let sum2 = calculate(player2);
+	return sum1 === sum2 ? 0 : sum1 > sum2 ? 1 : 2;
+};
+
+const calculate = (arr) => {
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i - 1] === 10 || arr[i - 2] === 10) sum += 2 * arr[i];
+		else sum += arr[i];
+	}
+	return sum;
+};
+console.log(isWinner([5, 6, 1, 10], [5, 1, 10, 5]));
