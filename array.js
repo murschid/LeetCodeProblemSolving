@@ -272,4 +272,28 @@ const calculate = (arr) => {
 	}
 	return sum;
 };
-console.log(isWinner([5, 6, 1, 10], [5, 1, 10, 5]));
+// console.log(isWinner([5, 6, 1, 10], [5, 1, 10, 5]));
+
+/**	628. Maximum Product of Three Numbers
+ * @param {number[]} nums
+ * @return {number}
+ */
+const maximumProduct = function (nums) {
+	const input = nums.sort((a, b) => b - a);
+	const size = nums.length;
+	const output1 = input[0] * input[1] * input[2];
+	const output2 = input[size - 1] * input[size - 2] * input[0];
+	return Math.max(output1, output2);
+};
+// console.log(maximumProduct([1, 2, 3, 4]));
+
+/**	1822. Sign of the Product of an Array
+ * @param {number[]} nums
+ * @return {number}
+ */
+const arraySign = function (nums) {
+	let product = 1;
+	for (let i = 0; i < nums.length; i++) product *= nums[i];
+	return product > 0 ? 1 : product < 0 ? -1 : 0;
+};
+console.log(arraySign([-1, -2, -3, -4, 3, 2, 1]));
