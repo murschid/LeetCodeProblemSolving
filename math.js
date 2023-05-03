@@ -347,4 +347,28 @@ const countTime = function (time) {
 	}
 	return hours * minutes;
 };
-console.log(countTime("??:??")); //1440
+// console.log(countTime("??:??")); //1440
+
+/**	2409. Count Days Spent Together
+ * @param {string} arriveAlice
+ * @param {string} leaveAlice
+ * @param {string} arriveBob
+ * @param {string} leaveBob
+ * @return {number}
+ */
+const countDaysTogether = function (arriveAlice, leaveAlice, arriveBob, leaveBob) {
+	//returning in milliseconds
+	const aliceArrivalDate = new Date("2023-" + arriveAlice);
+	const aliceLeavingDate = new Date("2023-" + leaveAlice);
+	const bobArrivalDate = new Date("2023-" + arriveBob);
+	const bobLeavingDate = new Date("2023-" + leaveBob);
+
+	//who arrived later
+	let arrivalMax = new Date(Math.max(aliceArrivalDate, bobArrivalDate));
+	//who leaved first
+	let leavingMin = new Date(Math.min(aliceLeavingDate, bobLeavingDate));
+
+	if (arrivalMax > leavingMin) return 0;
+	return Math.floor((leavingMin - arrivalMax) / (1000 * 60 * 60 * 24)) + 1;
+};
+// console.log(countDaysTogether("08-15", "08-18", "08-16", "08-19"));
