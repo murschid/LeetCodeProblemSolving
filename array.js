@@ -325,4 +325,21 @@ const vowelStrings = function (words, left, right) {
 	}
 	return res;
 };
-console.log(vowelStrings(["hey", "aeo", "mu", "ooo", "artro"], 1, 4));
+// console.log(vowelStrings(["hey", "aeo", "mu", "ooo", "artro"], 1, 4));
+
+/**
+ * @return {Generator<number>}
+ */
+const fibGenerator = function* () {
+	let [first, second] = [0, 1];
+	while (true) {
+		yield first;
+		[first, second] = [second, first + second];
+	}
+};
+
+/**
+ * const gen = fibGenerator();
+ * gen.next().value; // 0
+ * gen.next().value; // 1
+ */

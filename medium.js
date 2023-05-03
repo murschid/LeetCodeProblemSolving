@@ -179,10 +179,13 @@ var letterCombinations = function (digits) {
 	};
 	const res = [];
 	for (let i of digits) {
-		for (let j = 0; j < data[i].length; j++) {}
+		for (let j of data[i]) {
+			console.log(j);
+		}
 	}
+	// return res;
 };
-// letterCombinations("23");
+console.log(letterCombinations("234"));
 
 /**
  * @param {number[]} nums
@@ -266,4 +269,4 @@ const isPrime = (n) => {
 	}
 	return true;
 };
-console.log(countPrimes(10));
+// console.log(countPrimes(10));

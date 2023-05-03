@@ -307,20 +307,44 @@ const findDelayedArrivalTime = function (arrivalTime, delayedTime) {
  * @return {number[]}
  */
 const rowAndMaximumOnes = function (mat) {
-	const map = new Map();
-	mat.forEach((value, index) => {
-		map.set(
-			index,
-			value.reduce((acc, cur) => acc + cur, 0)
-		);
+	const arr = [];
+	mat.map((value) => {
+		let temp = value.reduce((acc, cur) => acc + cur, 0);
+		arr.push(temp);
 	});
-	// if (temp.length > 1 && temp[0] === temp[1]) return [0, temp[0]];
-	// return temp.length > 1 ? [1, Math.max(...temp)] : [0, temp[0]];
-	return [Math.max(...map.values)];
+	const max = Math.max(...arr);
+	return [arr.indexOf(max), max];
 };
-console.log(
-	rowAndMaximumOnes([
-		[1, 1],
-		[0, 1],
-	])
-);
+// console.log(
+// 	rowAndMaximumOnes([
+// 		[0, 0],
+// 		[1, 1],
+// 		[0, 0],
+// 	])
+// );
+
+/**	2437. Number of Valid Clock Times
+ * @param {string} time
+ * @return {number}
+ */
+const countTime = function (time) {
+	let hours = 1;
+	if (time[0] === "?" && time[1] === "?") {
+		hours = 24;
+	} else if (time[0] === "?") {
+		hours = time[1] <= 3 ? 3 : 2;
+	} else if (time[1] === "?") {
+		hours = time[0] <= 1 ? 10 : 4;
+	}
+
+	let minutes = 1;
+	if (time[3] === "?" && time[4] === "?") {
+		minutes = 60;
+	} else if (time[3] === "?") {
+		minutes = 6;
+	} else if (time[4] === "?") {
+		minutes = 10;
+	}
+	return hours * minutes;
+};
+console.log(countTime("??:??")); //1440
