@@ -343,3 +343,79 @@ const fibGenerator = function* () {
  * gen.next().value; // 0
  * gen.next().value; // 1
  */
+
+/**	1991. Find the Middle Index in Array
+ * @param {number[]} nums
+ * @return {number}
+ */
+const findMiddleIndex = function (nums) {
+	// let middle = 0;
+	// let first = 0;
+	// let last = 0;
+	// while (middle < nums.length) {
+	// 	for (let i = 0; i < middle; i++) first += nums[i];
+	// 	for (let i = middle + 1; i < nums.length; i++) last += nums[i];
+	// 	if (first === last) return middle;
+	// 	else {
+	// 		first = 0;
+	// 		last = 0;
+	// 		middle++;
+	// 	}
+	// }
+	// return -1;
+
+	// let total = nums.reduce((acc, cur) => acc + cur, 0);
+	// let left = 0;
+	// for (let i = 0; i < nums.length; i++) {
+	// 	if (left * 2 === total - nums[i]) return i;
+	// 	left += nums[i];
+	// }
+	// return -1;
+
+	for (let i = 0; i < nums.length; i++) {
+		let first = nums.slice(0, i).reduce((acc, cur) => acc + cur, 0);
+		let last = nums.slice(i + 1).reduce((acc, cur) => acc + cur, 0);
+		if (first === last) return i;
+	}
+	return -1;
+};
+// console.log(findMiddleIndex([2, 3, -1, 8, 4]));
+
+/**	2000. Reverse Prefix of Word
+ * @param {string} word
+ * @param {character} ch
+ * @return {string}
+ */
+const reversePrefix = function (word, ch) {
+	const limit = word.indexOf(ch);
+	const right = word.slice(limit + 1);
+	const left = [...word.slice(0, limit + 1)].reverse().join("");
+	return left + right;
+};
+// console.log(reversePrefix("abcdefd", "d"));
+
+/**	2006. Count Number of Pairs With Absolute Difference K
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+const countKDifference = function (nums, k) {
+	// let res = 0;
+	// for (let i = 0; i < nums.length; i++) {
+	// 	for (let j = i + 1; j < nums.length; j++) {
+	// 		if (nums[i] - nums[j] === k || nums[i] - nums[j] === -k) res++;
+	// 	}
+	// }
+	// return res;
+
+	const map = {};
+	for (let i of nums) {
+		map[i] ? map[i]++ : (map[i] = 1);
+	}
+	let result = 0;
+	for (let i = 0; i < nums.length; i++) {
+		if (map[nums[i] - k]) result += map[nums[i] - k];
+	}
+	return result;
+};
+console.log(countKDifference([1, 2, 2, 1], 1));
